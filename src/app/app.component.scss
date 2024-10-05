@@ -1,0 +1,34 @@
+:host {
+  // width: 100vw;
+  // height: 100vh;
+
+  // display: block;
+}
+
+.app-container {
+  // margin: 50px auto;
+  // width: 100%;
+  // height: 100%;
+
+  // display: block;
+
+
+
+  .inner-container {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
