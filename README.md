@@ -1,27 +1,35 @@
-# Cyberjesus
+# menu
+## start
+- 34 warmup (incl. alternative + variation)
+- 52 stretching (incl. alternative + variation)
+- pick 12 warmup and 12 stretching randomly
+  - integrate like/dislike to change probability
+  - each is 20 seconds, 5 seconds transition
+  - 12 exercises * 2 (warmup + stretch) * 25s = 600s = 10min + 30 sec transition between phases >>> total of 10.5 min
+- like/dislike button (local storage)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
-## Development server
+# in-training
+- exercise card
+  - name
+  - image
+  - `#ID`
+- progress bar underneath
+- pause button - below card
+- total time indicator - above card
+- loading indicator while images load
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# future features
+- session history
+  - what were exercises of previous sessions
+  - integrate in date picker/calendar
+- exercise stats
+  - how many time each exercise was done
+  - total time/etc
+- exercise settings
+  - liked/disliked
+- implement main menu
+- implement session stepper
+  - category
+  - difficulty
