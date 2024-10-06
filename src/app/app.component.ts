@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WakeLockService } from './core/services/wake-lock.service';
 import { MatCardModule } from '@angular/material/card';
-import { ExerciseCardComponent } from "./core/components/exercise-card/exercise-card.component";
+import { NgIf } from '@angular/common';
+import { TrainingService } from './core/services/training.service';
+import { TrainingViewComponent } from './core/components/training-view/training-view.component';
+import { MainMenuComponent } from './core/components/main-menu/main-menu.component';
 
 
 @Component({
@@ -11,16 +14,20 @@ import { ExerciseCardComponent } from "./core/components/exercise-card/exercise-
   imports: [
     RouterOutlet,
     MatCardModule,
-    ExerciseCardComponent,
+    NgIf,
+    TrainingViewComponent,
+    MainMenuComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'cyberjesus';
+
+  public $noTraining = this.trainingService.$noTraining;
 
   constructor(
-    private wakeLockService: WakeLockService
+    private wakeLockService: WakeLockService,
+    private trainingService: TrainingService,
   ) { }
 
   ngOnInit(): void {

@@ -13,9 +13,9 @@ export class Exercise {
 
   static initState(
     config: ExerciseConfig
-  ) {
+  ): ExerciseState {
     return {
-
+      stats: {},
     }
   }
 }

@@ -1,7 +1,13 @@
 <div class="app-container">
-  <div class="inner-container">
-    <app-exercise-card>
+  <div class="app-content">
+    @if($noTraining()) {
+    <app-main-menu>
 
-    </app-exercise-card>
+    </app-main-menu>
+    } @else {
+    <app-training-view>
+
+    </app-training-view>
+    }
   </div>
 </div>

@@ -1,20 +1,17 @@
 :host {
-  // width: 100vw;
-  // height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-  // display: block;
+  display: block;
 }
 
 .app-container {
-  // margin: 50px auto;
-  // width: 100%;
-  // height: 100%;
+  width: 100%;
+  height: 100%;
 
-  // display: block;
+  display: block;
 
-
-
-  .inner-container {
+  .app-content {
     padding: 50px;
     display: flex;
     justify-content: center;

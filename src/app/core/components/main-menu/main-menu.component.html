@@ -1,0 +1,58 @@
+<mat-card appearance="outlined"
+          class="main-menu">
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <div class="main-menu-item-container">
+          <h3>
+            Cyberjesus
+          </h3>
+        </div>
+      </mat-list-item>
+
+      <!-- @if (canResume) {
+      <mat-list-item>
+        <div class="main-menu-item-container">
+          <button mat-stroked-button
+                  (click)="resumeGame()">
+            Resume Game
+          </button>
+        </div>
+      </mat-list-item>
+      } -->
+
+      <mat-list-item>
+        <div class="main-menu-item-container">
+          <button mat-stroked-button
+                  (click)="startTraining()">
+            Start Training
+          </button>
+        </div>
+      </mat-list-item>
+
+      <!-- <mat-list-item>
+        <div class="main-menu-item-container">
+          <button mat-stroked-button
+                  (click)="quickGame()">
+            Quick Game
+          </button>
+        </div>
+      </mat-list-item> -->
+
+      <!-- <mat-list-item>
+        <div class="main-menu-item-container">
+          <button mat-stroked-button
+                  (click)="loadGame()">
+            Load Game
+          </button>
+
+          <input type="file"
+                 accept=".json"
+                 #loadGameInput
+                 (change)="onLoadGame($event)"
+                 style="display: none;" />
+        </div>
+      </mat-list-item> -->
+    </mat-list>
+  </mat-card-content>
+</mat-card>

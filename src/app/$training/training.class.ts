@@ -1,7 +1,8 @@
 import { signalState, SignalState } from "@ngrx/signals";
-import { TrainingConfig, TrainingState } from "./training.models";
-import { Exercise, ExerciseState } from "../$exercise";
 import { computed } from "@angular/core";
+
+import { TrainingConfig, TrainingPhase, TrainingState } from ".";
+import { Exercise, ExerciseState } from "../$exercise";
 
 
 export class Training {
@@ -29,6 +30,9 @@ export class Training {
 
   private initState(): TrainingState {
     return {
+      phase: TrainingPhase.PreTraining,
+      isPaused: false,
+
       exercises: this.config.exercises.reduce(
         (rec, config) => {
           // TODO add other configs as params
@@ -38,6 +42,8 @@ export class Training {
         },
         {} as Record<string, ExerciseState>
       ),
+
+      stats: {},
     };
   }
 

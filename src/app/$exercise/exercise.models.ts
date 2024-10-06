@@ -1,9 +1,11 @@
+// ===================== CONFIG =====================
+
 export interface ExerciseConfig {
-  id: number;
+  id: string;
   key: string;
 
   name: string;
-  description: string;
+  description?: string;
 
   image: string;
 
@@ -13,11 +15,17 @@ export interface ExerciseConfig {
   rest?: number;
 }
 
-export interface ExerciseState {
+// ===================== STATE =====================
+
+export interface ExerciseStats {
+
 }
 
+export interface ExerciseState {
+  stats: ExerciseStats;
+}
+
+// ===================== SETTINGS =====================
 
 export interface ExerciseSettings {
 }
-
-
