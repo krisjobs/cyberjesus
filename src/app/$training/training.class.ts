@@ -33,6 +33,8 @@ export class Training {
       phase: TrainingPhase.PreTraining,
       isPaused: false,
 
+      activeIdx: 0,
+
       exercises: this.config.exercises.reduce(
         (rec, config) => {
           // TODO add other configs as params

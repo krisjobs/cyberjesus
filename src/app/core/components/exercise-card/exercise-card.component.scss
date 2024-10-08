@@ -2,8 +2,17 @@
   display: block;
 }
 
-.example-card {
-  max-width: 400px;
+mat-card-header {
+  min-height: 100px;
+}
+
+mat-card-subtitle {
+  margin-top: 10px;
+}
+
+mat-card-content {
+  padding: 20px;
+  min-height: 30px;
 }
 
 .example-header-image {

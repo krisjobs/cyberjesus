@@ -1,8 +1,12 @@
-import { ExerciseConfig, ExerciseState } from "../$exercise";
+import { ExerciseKey, ExerciseState, ExerciseConfig } from "../$exercise";
 
 // ===================== CONFIG =====================
 
-export interface TrainingConfig {
+export interface BaseTrainingConfig {
+  exercises: ExerciseKey[];
+}
+
+export interface TrainingConfig extends Omit<BaseTrainingConfig, 'exercises'> {
   id: string;
 
   exercises: ExerciseConfig[];
@@ -23,6 +27,8 @@ export interface TrainingStats {
 export interface TrainingState {
   phase: TrainingPhase;
   isPaused: boolean;
+
+  activeIdx: number;
 
   exercises: Record<string, ExerciseState>;
 

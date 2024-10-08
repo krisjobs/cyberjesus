@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, input, computed, effect } from '@angular/core';
 import { Exercise } from '../../../$exercise';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,22 +19,35 @@ import { NgIf } from '@angular/common';
   styleUrl: './exercise-card.component.scss'
 })
 export class ExerciseCardComponent {
-  @Input()
-  public exercise!: Exercise;
-
   public $loading = signal(false);
+  public $exercise = input.required<Exercise>({ alias: 'exercise' });
+
+  public $uid = computed(() => this.$exercise().uid);
+
+  public $config = computed(() => this.$exercise().config);
+
+  public $imageUrl = computed(() => this.$exercise().url);
+
+  public $name = computed(() => this.$exercise().name);
+
+  public $description = computed(() => this.$exercise().description);
 
   constructor() {
     this.$loading.set(true);
+
+    effect(() => {
+      console.log(this.$exercise(), 'exercise');
+      this.$loading.set(true);
+    }, { allowSignalWrites: true });
   }
 
   public onImageLoad() {
-    console.warn('onImageLoad');
+    console.log('onImageLoad');
     this.$loading.set(false);
   }
 
   public onImageError() {
-    console.warn('onImageError');
+    console.error('onImageError');
     this.$loading.set(false);
   }
 }

@@ -9,6 +9,7 @@ export {
   TrainingPhase,
   TrainingStats,
   TrainingRecord,
+  BaseTrainingConfig,
 } from './training.models';
 
 export {
@@ -16,5 +17,5 @@ export {
 } from './training.configs';
 
 export {
-
+  $changeActiveIdx,
 } from './training.utils';

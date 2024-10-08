@@ -7,6 +7,10 @@ export {
   ExerciseSettings,
   ExerciseState,
   ExerciseStats,
+  BaseExerciseConfig,
+  ExerciseKey,
+  ExerciseLib,
+  VariationLib,
 } from './exercise.models';
 
 export {

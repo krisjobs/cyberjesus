@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { ExerciseCardComponent } from '../exercise-card/exercise-card.component';
+import { TrainingService } from '../../services/training.service';
 
 
 @Component({
@@ -13,5 +14,14 @@ import { ExerciseCardComponent } from '../exercise-card/exercise-card.component'
 })
 export class TrainingViewComponent {
 
-  constructor() { }
+  public exercises = this.trainingService.exercises;
+
+  public $activeExercise = computed(() => {
+    const activeIdx$ = this.trainingService.$state.activeIdx();
+    return this.exercises[activeIdx$];
+  });
+
+  constructor(
+    private trainingService: TrainingService,
+  ) { }
 }
