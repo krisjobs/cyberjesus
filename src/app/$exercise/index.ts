@@ -14,7 +14,8 @@ export {
 } from './exercise.models';
 
 export {
-
+  exercises,
+  variations,
 } from './exercise.configs';
 
 export {

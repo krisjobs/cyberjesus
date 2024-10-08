@@ -1,16 +1,15 @@
 import { Signal } from "@angular/core";
-import { ExerciseConfig, ExerciseKey, ExerciseState } from ".";
+import { exercises, ExerciseConfig, ExerciseKey, ExerciseState } from ".";
 import { v4 as uuidv4 } from 'uuid';
-import { exercises } from "./exercise.configs";
 
 
 export class Exercise {
-
-  public static instanceCount = 0;
-  public uid = ++Exercise.instanceCount;
-
   public get id(): string {
-    return this.config.id;
+    return `${this.config.id}`;
+  }
+
+  public get uid(): string {
+    return `${this.config.uid}`;
   }
 
   public get name(): string {

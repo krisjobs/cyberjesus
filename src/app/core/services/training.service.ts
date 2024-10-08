@@ -2,7 +2,7 @@ import { computed, effect, Injectable, signal } from '@angular/core';
 import { $changeActiveIdx, BaseTrainingConfig, Training, TrainingConfig, TrainingPhase, TrainingRecord } from '../../$training';
 
 import { v4 as uuidv4 } from 'uuid';
-import { Exercise } from '../../$exercise';
+import { exercises, Exercise, ExerciseKey } from '../../$exercise';
 import { patchState } from '@ngrx/signals';
 
 
@@ -10,7 +10,7 @@ import { patchState } from '@ngrx/signals';
   providedIn: 'root'
 })
 export class TrainingService {
-  private readonly SET_DURATION = 5;
+  private readonly SET_DURATION = 20;
 
   private $training = signal<Training | null>(null);
 
@@ -76,15 +76,17 @@ export class TrainingService {
 
     setInterval(() => {
       this.changeActiveIdx();
-    }, this.SET_DURATION*1000);
+    }, this.SET_DURATION * 1000);
   }
 
   private generateTrainingConfig(): TrainingConfig {
+    const allExercises = Object.keys(exercises) as ExerciseKey[];
+
+    const maxKeys = 10;
+    const randomKeys = allExercises.sort(() => Math.random() - 0.5).slice(0, maxKeys);
+
     const config: BaseTrainingConfig = {
-      exercises: [
-        'alternatingBackExpansions',
-        'bounceOnTheSpot',
-      ]
+      exercises: randomKeys
     }
 
     return {

@@ -3,6 +3,7 @@
 export interface BaseExerciseConfig {
   name: string;
   description?: string;
+  uid: number;
 
   images: string[];
 
