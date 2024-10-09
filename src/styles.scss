@@ -1,4 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@include mat.core();
+
+// $palette: mat.$red-palette;
+// $palette: mat.$green-palette;
+// $palette: mat.$blue-palette;
+// $yellow-palette: mat.$yellow-palette;
+// $palette: mat.$cyan-palette;
+// $palette: mat.$magenta-palette;
+// $orange-palette: mat.$orange-palette;
+// $chartreuse-palette: mat.$chartreuse-palette;
+// $spring-green-palette: mat.$spring-green-palette;
+$azure-palette: mat.$azure-palette;
+// $violet-palette: mat.$violet-palette;
+$rose-palette: mat.$rose-palette;
+
+$typography: (
+  brand-family: "Comic Sans",
+  bold-weight: 900,
+);
+
+$density: (
+  scale: -1,
+);
+
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: $azure-palette,
+      tertiary: $rose-palette,
+    ),
+    typography: $typography,
+    density: $density,
+  )
+);
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -4,13 +4,15 @@ import { $changeActiveIdx, BaseTrainingConfig, Training, TrainingConfig, Trainin
 import { v4 as uuidv4 } from 'uuid';
 import { exercises, Exercise, ExerciseKey } from '../../$exercise';
 import { patchState } from '@ngrx/signals';
+import { AppService } from './app.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainingService {
-  private readonly SET_DURATION = 20;
+  public readonly SET_DURATION = 5; // seconds
+  public readonly EXERCISE_COUNT = 10;
 
   private $training = signal<Training | null>(null);
 
@@ -46,7 +48,9 @@ export class TrainingService {
     return this.training.$state;
   }
 
-  constructor() {
+  constructor(
+    private appService: AppService,
+  ) {
     this.setAutosave();
   }
 
@@ -72,9 +76,24 @@ export class TrainingService {
 
   public startTraining() {
     const config = this.generateTrainingConfig();
+    const exerciseCount = config.exercises.length;
+
     this.$training.set(new Training(config));
 
-    setInterval(() => {
+    let counter = 0;
+    const intervalId = setInterval(() => {
+      if (this.appService.$paused()) {
+        return;
+      }
+
+      counter++;
+
+      if (counter >= exerciseCount) {
+        clearInterval(intervalId);
+        this.endTraining();
+        return;
+      }
+
       this.changeActiveIdx();
     }, this.SET_DURATION * 1000);
   }
@@ -82,8 +101,7 @@ export class TrainingService {
   private generateTrainingConfig(): TrainingConfig {
     const allExercises = Object.keys(exercises) as ExerciseKey[];
 
-    const maxKeys = 10;
-    const randomKeys = allExercises.sort(() => Math.random() - 0.5).slice(0, maxKeys);
+    const randomKeys = allExercises.sort(() => Math.random() - 0.5).slice(0, this.EXERCISE_COUNT);
 
     const config: BaseTrainingConfig = {
       exercises: randomKeys

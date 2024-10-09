@@ -2,7 +2,17 @@
           appearance="outlined">
   <mat-card-header>
     <div mat-card-avatar
-         class="example-header-image"></div>
+         class="exercise-timer-container">
+      <mat-progress-spinner class="exercise-timer"
+                            [diameter]="56"
+                            [value]="$timePercentage()">
+      </mat-progress-spinner>
+
+      <div class="exercise-timer-value">
+        {{ $timeLeft() }}
+      </div>
+    </div>
+
     <mat-card-title>
       #ID {{ $uid() }}
     </mat-card-title>
@@ -11,6 +21,10 @@
       {{ $name() }}
     </mat-card-subtitle>
   </mat-card-header>
+
+  <mat-progress-bar mode="determinate"
+                    [value]="$totalPercentage()">
+  </mat-progress-bar>
 
   @let loading = $loading();
   @if(loading) {
@@ -28,11 +42,21 @@
   <mat-card-content>
     <p>
       {{ $description() }}
+      [[description]]
     </p>
   </mat-card-content>
 
   <mat-card-actions [align]="'end'">
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-fab
+            extended
+            (click)="pauseTraining()">
+      <mat-icon>
+        pause
+      </mat-icon>
+
+      <span>
+        Pause
+      </span>
+    </button>
   </mat-card-actions>
 </mat-card>
